@@ -5,8 +5,8 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public/build')
+        path: path.resolve(__dirname, 'public/build'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -18,6 +18,13 @@ module.exports = {
                 })
             }     
         ]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'public/build'),
+        compress: true,
+        port: 9000,
+        stats: 'errors-only',
+        open: true
     },
     plugins: [
         new HtmlWebpackPlugin({
